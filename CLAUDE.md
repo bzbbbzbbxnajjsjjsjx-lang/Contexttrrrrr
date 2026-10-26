@@ -43,6 +43,11 @@ Bu proje bir Jetpack Compose UI üretim harness'idir. Amaç uygulama değil, AI'
 - Çıktıda `DUR:` görülürse kod değiştirilmez, durulup rapor verilir.
 - Durum `.harness/state.json` içinde tutulur, git'e girmez.
 
+## Altın kontrol
+
+- Yeni üretilen her ekran dosyası `scripts/golden-check.sh <dosya>` ile kontrol edilir.
+- Sabit istekler ve beklenenler `docs/design/golden/README.md` içindedir.
+
 ## Token kontrolü
 
 - `scripts/check-tokens.sh` tokens.md ile Kotlin değerlerini karşılaştırır ve tema dışı hardcoded `Color` / `dp` arar.
