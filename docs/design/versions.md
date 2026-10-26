@@ -1,0 +1,35 @@
+# Sürüm kayıtları
+
+Tarih: 2026-10-26. Tüm sürümler `gradle/libs.versions.toml` ve `gradle/wrapper/gradle-wrapper.properties` içinde sabit.
+Dinamik sürüm (`+`, `latest`) yok.
+
+| Bileşen | Seçilen | Kaynak | Not |
+|---|---|---|---|
+| JDK (hedef) | 25.0.5 LTS (Temurin) | Adoptium binary | Kullanıcı kararı: JDK 25. `jvmToolchain(25)`. |
+| Gradle | 9.8.2 | https://gradle.org/releases/ | En güncel kararlı, 19 Eki 2026. |
+| Android Gradle Plugin | 9.4.0 | https://developer.android.com/build/releases/gradle-plugin | Min. Gradle 9.6.0, min. JDK 17. Max. API 37. |
+| Kotlin | 2.4.21 | https://kotlinlang.org/docs/releases.html | En güncel kararlı, 8 Eki 2026. |
+| Compose BOM | 2026.09.00 | https://developer.android.com/develop/ui/compose/bom/bom-mapping | Kararlılık durumu sayfada teyit edilemedi, derleme ile doğrulanacak. |
+| compose material3 | 1.4.0 | BOM eşlemesi | BOM tarafından yönetilir, ayrıca sabitlenmez. |
+| compose ui | 1.12.1 | BOM eşlemesi | BOM tarafından yönetilir. |
+| activity-compose | 1.13.0 | https://developer.android.com/jetpack/androidx/releases/activity | 11 Mart 2026, kararlı. |
+| lifecycle (runtime-compose, viewmodel-compose) | 2.11.0 | https://developer.android.com/jetpack/androidx/releases/lifecycle | 17 Haziran 2026, kararlı. |
+| compileSdk / targetSdk | 36 | https://developer.android.com/tools/releases/platforms | Sayfa en güncel kararlı API'yi 36 (Android 16) gösteriyor. |
+| minSdk | 24 | Harness kararı | Kaynak yok, proje gereksinimi gelince değiştirilir. |
+
+## Uyumluluk notları
+
+- **AGP 9.x ile built-in Kotlin:** `org.jetbrains.kotlin.android` plugin'i uygulanmaz, AGP 9.0'dan beri gerekmiyor.
+  Kaynak: https://developer.android.com/build/migrate-to-built-in-kotlin
+- **Compose compiler:** `org.jetbrains.kotlin.plugin.compose`, Kotlin ile aynı sürümde (`kotlin = 2.4.21`).
+- **AGP 9.4 ile Kotlin 2.4.21 uyumu:** AGP 9.4 sürüm notları Kotlin sürümünü açıkça belirtmiyor. Derleme ile doğrulanacak.
+- **API 37 (Android 17):** Sayfa kararlı mı beta mı olduğunu net söylemiyor. Bu yüzden compileSdk 36'da kaldık.
+  AGP 9.4 API 37'ye kadar destekliyor.
+- **Screenshot testi (ileride):** Resmi gereksinimler AGP 9.0+, Kotlin 2.2.10+, JDK 17+. Bu projede sağlanıyor.
+  Kaynak: https://developer.android.com/studio/preview/compose-screenshot-testing
+
+## Açık kalan kararlar
+
+- Kotlin 2.4.21 + AGP 9.4.0 derlenemezse Kotlin sürümü önce düşürülür, sonra kayıt güncellenir.
+- Compose BOM'un kararlılığı derleme sırasında teyit edilir.
+- API 37 kararlı olduğunda compileSdk yükseltilir.
