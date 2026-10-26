@@ -14,8 +14,11 @@ Dinamik sürüm (`+`, `latest`) yok.
 | compose ui | 1.12.1 | BOM eşlemesi | BOM tarafından yönetilir. |
 | activity-compose | 1.13.0 | https://developer.android.com/jetpack/androidx/releases/activity | 11 Mart 2026, kararlı. |
 | lifecycle (runtime-compose, viewmodel-compose) | 2.11.0 | https://developer.android.com/jetpack/androidx/releases/lifecycle | 17 Haziran 2026, kararlı. |
-| compileSdk / targetSdk | 36 | https://developer.android.com/tools/releases/platforms | Sayfa en güncel kararlı API'yi 36 (Android 16) gösteriyor. |
+| compileSdk | 37.2 | https://developer.android.com/tools/releases/platforms | Compose BOM 2026.09.00 kütüphaneleri compileSdk 37+ istiyor (assembleDebug hatası). Kullanıcı onayı ile 37.2. |
+| targetSdk | 36 | https://developer.android.com/tools/releases/platforms | En güncel kararlı API 36 (Android 16) olarak sayfada görünüyor. |
 | minSdk | 24 | Harness kararı | Kaynak yok, proje gereksinimi gelince değiştirilir. |
+
+compileSdk, targetSdk ve minSdk değerleri `libs.versions.toml` içindedir.
 
 ## Uyumluluk notları
 
