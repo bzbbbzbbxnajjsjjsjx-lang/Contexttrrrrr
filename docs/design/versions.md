@@ -7,7 +7,7 @@ Dinamik sürüm (`+`, `latest`) yok.
 |---|---|---|---|
 | JDK (hedef) | 25.0.5 LTS (Temurin) | Adoptium binary | Kullanıcı kararı: JDK 25. `jvmToolchain(25)`. |
 | Gradle | 9.8.2 | https://gradle.org/releases/ | En güncel kararlı, 19 Eki 2026. |
-| Android Gradle Plugin | 9.4.0 | https://developer.android.com/build/releases/gradle-plugin | Min. Gradle 9.6.0, min. JDK 17. Max. API 37. |
+| Android Gradle Plugin | 9.4.1 | https://developer.android.com/build/releases/gradle-plugin | Lint uyarısıyla güncellendi (9.4.0 -> 9.4.1). Min. Gradle 9.6.0, min. JDK 17. Max. API 37. |
 | Kotlin | 2.4.21 | https://kotlinlang.org/docs/releases.html | En güncel kararlı, 8 Eki 2026. |
 | Compose BOM | 2026.09.00 | https://developer.android.com/develop/ui/compose/bom/bom-mapping | Kararlılık durumu sayfada teyit edilemedi, derleme ile doğrulanacak. |
 | compose material3 | 1.4.0 | BOM eşlemesi | BOM tarafından yönetilir, ayrıca sabitlenmez. |
@@ -15,7 +15,7 @@ Dinamik sürüm (`+`, `latest`) yok.
 | activity-compose | 1.13.0 | https://developer.android.com/jetpack/androidx/releases/activity | 11 Mart 2026, kararlı. |
 | lifecycle (runtime-compose, viewmodel-compose) | 2.11.0 | https://developer.android.com/jetpack/androidx/releases/lifecycle | 17 Haziran 2026, kararlı. |
 | compileSdk | 37.2 | https://developer.android.com/tools/releases/platforms | Compose BOM 2026.09.00 kütüphaneleri compileSdk 37+ istiyor (assembleDebug hatası). Kullanıcı onayı ile 37.2. |
-| targetSdk | 36 | https://developer.android.com/tools/releases/platforms | En güncel kararlı API 36 (Android 16) olarak sayfada görünüyor. |
+| targetSdk | 37 | https://developer.android.com/tools/releases/platforms | Lint "en güncel hedef" uyarısıyla 37'ye yükseltildi. API 37'nin kararlılığı kaynakta net değil, derleme ve lint GEÇTİ. |
 | minSdk | 24 | Harness kararı | Kaynak yok, proje gereksinimi gelince değiştirilir. |
 
 compileSdk, targetSdk ve minSdk değerleri `libs.versions.toml` içindedir.
