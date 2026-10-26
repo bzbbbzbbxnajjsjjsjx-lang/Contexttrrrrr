@@ -50,7 +50,7 @@ case "$cmd" in
         # Adım adı log dosyasının adından gelir (ör. assembleDebug.log).
         step="$(basename "$2" .log)"
         # İlk gerçek hata satırı: Kotlin "e: ", Gradle "What went wrong" sonrası satır, lint "Error:".
-        first="$(grep -m1 -E '^e: |Error:|^> |What went wrong' -A1 "$2" | tr -s ' ' | head -n 2 | tr '\n' ' ')"
+        first="$(grep -m1 -E '^e: |Error:|^> |What went wrong|KALDI:' -A1 "$2" | tr -s ' ' | head -n 2 | tr '\n' ' ')"
         [[ -z "$first" ]] && first="(hata satırı bulunamadı)"
         printf '%s|%s' "$step" "$first" | sha256sum | cut -c1-16
         ;;
