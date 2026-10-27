@@ -31,6 +31,14 @@ compileSdk, targetSdk ve minSdk değerleri `libs.versions.toml` içindedir.
 - **Screenshot testi (ileride):** Resmi gereksinimler AGP 9.0+, Kotlin 2.2.10+, JDK 17+. Bu projede sağlanıyor.
   Kaynak: https://developer.android.com/studio/preview/compose-screenshot-testing
 
+## Tasarım dili kararı: standart Material 3
+
+Tema standart Material 3 (`MaterialTheme`, material3 1.4.0 hattı). Material 3 Expressive kullanılmıyor.
+
+- Compose'da Expressive API'leri şu an `1.5.0-alpha` serisinde. Son gözlenen sürüm `1.5.0-alpha27`. Alpha olduğu için sürüm kuralımız gereği kullanılmıyor.
+- Kaynak: https://developer.android.com/jetpack/androidx/releases/compose-material3
+- Kararlı olduğunda geçiş: `ui/theme/Theme.kt` içinde `MaterialTheme` yerine `MaterialExpressiveTheme`, ardından bu sürüm kaydı ve `tokens.md` güncellenir. Diğer dosyalar değişmez, çünkü ekranlar `MaterialTheme.*` tokenlarını kullanıyor.
+
 ## Test kütüphaneleri
 
 | Bileşen | Sürüm | Kaynak | Not |
