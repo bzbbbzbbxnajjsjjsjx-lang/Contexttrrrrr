@@ -1,5 +1,8 @@
 package com.example.uiharness.ui.screens
 
+import com.example.uiharness.notes.NotesScreen
+import com.example.uiharness.notes.NotesUiState
+import com.example.uiharness.notes.sampleNotes
 import com.example.uiharness.ui.theme.AppTheme
 import com.github.takahirom.roborazzi.captureRoboImage
 import org.junit.Test
@@ -71,6 +74,32 @@ class ScreenSnapshotTest {
                 HealthDashboardScreen(
                     state = sampleHealthDashboardState(),
                     onRangeSelected = {},
+                )
+            }
+        }
+    }
+
+    @Test
+    fun notesScreen_list() {
+        captureRoboImage("src/test/snapshots/images/notesScreen_list.png") {
+            AppTheme {
+                NotesScreen(
+                    state = NotesUiState(notes = sampleNotes()),
+                    onAdd = {}, onSelect = {}, onBack = {},
+                    onTitleChange = {}, onBodyChange = {}, onDelete = {},
+                )
+            }
+        }
+    }
+
+    @Test
+    fun notesScreen_editor() {
+        captureRoboImage("src/test/snapshots/images/notesScreen_editor.png") {
+            AppTheme {
+                NotesScreen(
+                    state = NotesUiState(notes = sampleNotes(), selectedNote = sampleNotes().first()),
+                    onAdd = {}, onSelect = {}, onBack = {},
+                    onTitleChange = {}, onBodyChange = {}, onDelete = {},
                 )
             }
         }
