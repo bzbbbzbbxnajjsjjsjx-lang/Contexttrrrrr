@@ -16,6 +16,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.uiharness.diary.DiaryRoute
 import com.example.uiharness.notes.NotesRoute
 import com.example.uiharness.ui.theme.AppTheme
 import com.example.uiharness.ui.theme.Spacing
@@ -27,6 +28,7 @@ enum class DemoDestination(val label: String) {
     ITEM_LIST("Öğe listesi"),
     HEALTH("Sağlık panosu"),
     NOTES("Notlar"),
+    DIARY("Günlük"),
 }
 
 @Composable
@@ -62,6 +64,7 @@ fun DemoHome(
                 DemoDestination.SIGN_UP -> SignUpRoute()
                 DemoDestination.ITEM_LIST -> ItemListRoute()
                 DemoDestination.NOTES -> NotesRoute()
+                DemoDestination.DIARY -> DiaryRoute()
                 DemoDestination.HEALTH -> HealthDashboardScreen(
                     state = sampleHealthDashboardState().copy(selectedRange = healthRange),
                     onRangeSelected = { healthRange = it },

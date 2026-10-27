@@ -1,5 +1,8 @@
 package com.example.uiharness.ui.screens
 
+import com.example.uiharness.diary.DiaryScreen
+import com.example.uiharness.diary.DiaryUiState
+import com.example.uiharness.diary.sampleDiaryEntries
 import com.example.uiharness.notes.NotesScreen
 import com.example.uiharness.notes.NotesUiState
 import com.example.uiharness.notes.sampleNotes
@@ -119,6 +122,32 @@ class ScreenSnapshotTest {
         captureRoboImage("src/test/snapshots/images/itemListScreen_filled.png") {
             AppTheme {
                 ItemListScreen(state = ItemListUiState(items = listOf("Süt", "Ekmek", "Yumurta")))
+            }
+        }
+    }
+
+    @Test
+    fun diaryScreen_list() {
+        captureRoboImage("src/test/snapshots/images/diaryScreen_list.png") {
+            AppTheme {
+                DiaryScreen(
+                    state = DiaryUiState(entries = sampleDiaryEntries()),
+                    onAdd = {}, onSelect = {}, onBack = {},
+                    onTitleChange = {}, onBodyChange = {}, onDelete = {},
+                )
+            }
+        }
+    }
+
+    @Test
+    fun diaryScreen_editor() {
+        captureRoboImage("src/test/snapshots/images/diaryScreen_editor.png") {
+            AppTheme {
+                DiaryScreen(
+                    state = DiaryUiState(entries = sampleDiaryEntries(), selectedEntry = sampleDiaryEntries().first()),
+                    onAdd = {}, onSelect = {}, onBack = {},
+                    onTitleChange = {}, onBodyChange = {}, onDelete = {},
+                )
             }
         }
     }
