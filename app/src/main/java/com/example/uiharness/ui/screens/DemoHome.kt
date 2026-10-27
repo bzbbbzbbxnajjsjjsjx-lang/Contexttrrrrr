@@ -24,6 +24,7 @@ enum class DemoDestination(val label: String) {
     NOTE("Not"),
     SIGN_UP("Kayıt formu"),
     ITEM_LIST("Öğe listesi"),
+    HEALTH("Sağlık panosu"),
 }
 
 @Composable
@@ -31,6 +32,7 @@ fun DemoHome(
     modifier: Modifier = Modifier,
 ) {
     var destination by rememberSaveable { mutableStateOf<DemoDestination?>(null) }
+    var healthRange by rememberSaveable { mutableStateOf(HealthRange.WEEK) }
 
     Column(
         modifier = modifier.fillMaxSize().padding(Spacing.md),
@@ -57,6 +59,10 @@ fun DemoHome(
                 )
                 DemoDestination.SIGN_UP -> SignUpRoute()
                 DemoDestination.ITEM_LIST -> ItemListRoute()
+                DemoDestination.HEALTH -> HealthDashboardScreen(
+                    state = sampleHealthDashboardState().copy(selectedRange = healthRange),
+                    onRangeSelected = { healthRange = it },
+                )
             }
         }
     }

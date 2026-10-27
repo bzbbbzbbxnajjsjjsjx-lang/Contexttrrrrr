@@ -62,6 +62,20 @@ class ScreenSnapshotTest {
         }
     }
 
+    // Panonun tamamı görünsün diye bu testte ekran daha uzun. Diğer testler varsayılan boyutta kalır.
+    @Config(qualifiers = "w360dp-h900dp")
+    @Test
+    fun healthDashboard() {
+        captureRoboImage("src/test/snapshots/images/healthDashboard.png") {
+            AppTheme {
+                HealthDashboardScreen(
+                    state = sampleHealthDashboardState(),
+                    onRangeSelected = {},
+                )
+            }
+        }
+    }
+
     @Test
     fun demoHome_menu() {
         captureRoboImage("src/test/snapshots/images/demoHome_menu.png") {
