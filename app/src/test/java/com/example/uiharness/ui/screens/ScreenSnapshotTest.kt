@@ -63,6 +63,15 @@ class ScreenSnapshotTest {
     }
 
     @Test
+    fun demoHome_menu() {
+        captureRoboImage("src/test/snapshots/images/demoHome_menu.png") {
+            AppTheme {
+                DemoHome()
+            }
+        }
+    }
+
+    @Test
     fun itemListScreen_filled() {
         captureRoboImage("src/test/snapshots/images/itemListScreen_filled.png") {
             AppTheme {
