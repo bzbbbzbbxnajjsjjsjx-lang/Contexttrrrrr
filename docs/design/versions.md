@@ -31,6 +31,20 @@ compileSdk, targetSdk ve minSdk değerleri `libs.versions.toml` içindedir.
 - **Screenshot testi (ileride):** Resmi gereksinimler AGP 9.0+, Kotlin 2.2.10+, JDK 17+. Bu projede sağlanıyor.
   Kaynak: https://developer.android.com/studio/preview/compose-screenshot-testing
 
+## Test kütüphaneleri
+
+| Bileşen | Sürüm | Kaynak | Not |
+|---|---|---|---|
+| Roborazzi (plugin + compose) | 1.77.0 | https://repo1.maven.org/maven2/io/github/takahirom/roborazzi/ | Üçüncü taraf (Google değil). Maven Central'da en güncel kararlı. Kullanıcı onayı ile seçildi. |
+| Robolectric | 4.17 | https://repo1.maven.org/maven2/org/robolectric/robolectric/ | Emülatörsüz JVM testi. |
+| JUnit | 4.13.2 | https://repo1.maven.org/maven2/junit/junit/ | Robolectric ve Compose test rule için. |
+
+Resmi Google Compose screenshot aracı (`com.android.compose.screenshot`) hâlâ alpha (`0.0.1-alpha16`). Kararlı olmadığı için kullanılmıyor: https://developer.android.com/studio/preview/compose-screenshot-testing
+
+**Test JVM sürümü:** Robolectric 4.17, JDK 25 üzerinde çalışmıyor. Testler JDK 21 launcher ile koşar, bayt kodu hedefi 21'dir. Gerekli `--add-exports` / `--add-opens` bayrakları `app/build.gradle.kts` içindedir.
+
+**Test SDK:** Robolectric `sdk = 36` ile sabitlenmiş (`ScreenSnapshotTest`). targetSdk 37'de uygulama paylaşımlı bellek yolunda çöküyor.
+
 ## Açık kalan kararlar
 
 - Kotlin 2.4.21 + AGP 9.4.0 derlenemezse Kotlin sürümü önce düşürülür, sonra kayıt güncellenir.

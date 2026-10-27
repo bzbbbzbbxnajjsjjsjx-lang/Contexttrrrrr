@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.roborazzi)
 }
 
 android {
@@ -29,10 +30,42 @@ android {
     buildFeatures {
         compose = true
     }
+
+    testOptions {
+        unitTests {
+            // Robolectric'in Compose kaynaklarını ve fontları görmesi için gerekli.
+            isIncludeAndroidResources = true
+        }
+    }
+}
+
+// Derleme JDK 25 ile yapılır. Bayt kodu hedefi 21: Robolectric 4.17, JDK 25'te
+// çalışmıyor (FileDescriptor hatası), testler JDK 21 ile koşar. Bayt kodu 21 olduğu için
+// hem derlenmiş kod hem testler aynı JVM sürümüne uyar.
+android {
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
+    }
 }
 
 kotlin {
     jvmToolchain(25)
+    compilerOptions {
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21)
+    }
+}
+
+// Ekran görüntüsü testleri kayıtlı referansla karşılaştırır (verify modu).
+// Referansı güncellemek için bilinçli olarak `recordRoborazziDebug` çalıştırılır.
+tasks.withType<Test>().configureEach {
+    javaLauncher.set(javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(21)) })
+    systemProperty("roborazzi.test.verify", "true")
+    // Robolectric, java.io.FileDescriptor alanlarına ve jdk.internal.access.SharedSecrets'e reflection ile erişir.
+    jvmArgs(
+        "--add-opens", "java.base/java.io=ALL-UNNAMED",
+        "--add-exports", "java.base/jdk.internal.access=ALL-UNNAMED",
+    )
 }
 
 dependencies {
@@ -44,4 +77,10 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     debugImplementation(libs.androidx.compose.ui.tooling)
+
+    testImplementation(libs.junit)
+    testImplementation(libs.robolectric)
+    testImplementation(libs.roborazzi.compose)
+    testImplementation(libs.androidx.compose.ui.test.junit4)
+    debugImplementation(libs.androidx.compose.ui.test.manifest)
 }

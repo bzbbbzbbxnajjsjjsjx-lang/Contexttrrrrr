@@ -43,6 +43,12 @@ Bu proje bir Jetpack Compose UI üretim harness'idir. Amaç uygulama değil, AI'
 - Çıktıda `DUR:` görülürse kod değiştirilmez, durulup rapor verilir.
 - Durum `.harness/state.json` içinde tutulur, git'e girmez.
 
+## Ekran görüntüsü testi
+
+- Ekran görüntüsü referansları `app/src/test/snapshots/images/` altındadır ve git'te tutulur.
+- `verify-ui.sh` içindeki `testDebugUnitTest` görüntüleri referansla karşılaştırır. Fark varsa adım kalır.
+- Görsel değişiklik bilinçliyse referans yalnızca `./gradlew recordRoborazziDebug` ile güncellenir. Güncellenen PNG'ler diff'te incelenir.
+
 ## Altın kontrol
 
 - Yeni üretilen her ekran dosyası `scripts/golden-check.sh <dosya>` ile kontrol edilir.
