@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "UiHarness"
 include(":app")
+include(":lint-rules")

@@ -54,6 +54,11 @@ Bu proje bir Jetpack Compose UI üretim harness'idir. Amaç uygulama değil, AI'
 - Yeni üretilen her ekran dosyası `scripts/golden-check.sh <dosya>` ile kontrol edilir.
 - Sabit istekler ve beklenenler `docs/design/golden/README.md` içindedir.
 
+## Lint kuralı
+
+- `lint-rules/` modülü, `HardcodedDesignValue` kuralını içerir: `ui/theme` dışında `Color(...)` ve sayısal `.dp` kullanımını hata olarak raporlar.
+- Kural `lintDebug` içinde çalışır, `verify-ui.sh` bu adımı zaten kapsar.
+
 ## Token kontrolü
 
 - `scripts/check-tokens.sh` tokens.md ile Kotlin değerlerini karşılaştırır ve tema dışı hardcoded `Color` / `dp` arar.

@@ -38,6 +38,7 @@ compileSdk, targetSdk ve minSdk değerleri `libs.versions.toml` içindedir.
 | Roborazzi (plugin + compose) | 1.77.0 | https://repo1.maven.org/maven2/io/github/takahirom/roborazzi/ | Üçüncü taraf (Google değil). Maven Central'da en güncel kararlı. Kullanıcı onayı ile seçildi. |
 | Robolectric | 4.17 | https://repo1.maven.org/maven2/org/robolectric/robolectric/ | Emülatörsüz JVM testi. |
 | JUnit | 4.13.2 | https://repo1.maven.org/maven2/junit/junit/ | Robolectric ve Compose test rule için. |
+| Lint API (`lint-api`, `lint-checks`) | 32.4.1 | https://dl.google.com/dl/android/maven2/com/android/tools/lint/lint-api/maven-metadata.xml | `lint-rules` modülü için. AGP 9.4 ile aynı minor hattı (32.4). Kuralın AGP ile çalıştığı `lintDebug` ile kanıtlandı. Google, lint API'sinin kararlı olmadığını belirtiyor. |
 
 Resmi Google Compose screenshot aracı (`com.android.compose.screenshot`) hâlâ alpha (`0.0.1-alpha16`). Kararlı olmadığı için kullanılmıyor: https://developer.android.com/studio/preview/compose-screenshot-testing
 
