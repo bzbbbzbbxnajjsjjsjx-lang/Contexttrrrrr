@@ -10,7 +10,7 @@ Dinamik sürüm (`+`, `latest`) yok.
 | Android Gradle Plugin | 9.4.1 | https://developer.android.com/build/releases/gradle-plugin | Lint uyarısıyla güncellendi (9.4.0 -> 9.4.1). Min. Gradle 9.6.0, min. JDK 17. Max. API 37. |
 | Kotlin | 2.4.21 | https://kotlinlang.org/docs/releases.html | En güncel kararlı, 8 Eki 2026. |
 | Compose BOM | 2026.09.00 | https://developer.android.com/develop/ui/compose/bom/bom-mapping | Kararlılık durumu sayfada teyit edilemedi, derleme ile doğrulanacak. |
-| compose material3 | 1.4.0 | BOM eşlemesi | BOM tarafından yönetilir, ayrıca sabitlenmez. |
+| compose material3 | 1.5.0-beta02 | https://developer.android.com/jetpack/androidx/releases/compose-material3 | BOM'un 1.4.0'ı yerine açıkça sabitlendi. Expressive için. Beta, bkz. "Tasarım dili" bölümü. |
 | compose ui | 1.12.1 | BOM eşlemesi | BOM tarafından yönetilir. |
 | activity-compose | 1.13.0 | https://developer.android.com/jetpack/androidx/releases/activity | 11 Mart 2026, kararlı. |
 | lifecycle (runtime-compose, viewmodel-compose) | 2.11.0 | https://developer.android.com/jetpack/androidx/releases/lifecycle | 17 Haziran 2026, kararlı. |
@@ -31,13 +31,15 @@ compileSdk, targetSdk ve minSdk değerleri `libs.versions.toml` içindedir.
 - **Screenshot testi (ileride):** Resmi gereksinimler AGP 9.0+, Kotlin 2.2.10+, JDK 17+. Bu projede sağlanıyor.
   Kaynak: https://developer.android.com/studio/preview/compose-screenshot-testing
 
-## Tasarım dili kararı: standart Material 3
+## Tasarım dili: Material 3 Expressive (kullanıcı kararı)
 
-Tema standart Material 3 (`MaterialTheme`, material3 1.4.0 hattı). Material 3 Expressive kullanılmıyor.
+Tema `MaterialExpressiveTheme` ve `MotionScheme.expressive()` kullanıyor.
 
-- Compose'da Expressive API'leri şu an `1.5.0-alpha` serisinde. Son gözlenen sürüm `1.5.0-alpha27`. Alpha olduğu için sürüm kuralımız gereği kullanılmıyor.
+- **Sürüm istisnası:** Material 3 Expressive, material3 `1.5.0` hattında. Bu hat şu an beta (`1.5.0-beta02` en güncel). Kararlı hat (`1.4.0`) Expressive'i içermiyor. Kullanıcı açıkça Expressive istediği için beta sürüm bilinçli olarak seçildi. Sürüm kuralının bu istisnası kayıtlı.
 - Kaynak: https://developer.android.com/jetpack/androidx/releases/compose-material3
-- Kararlı olduğunda geçiş: `ui/theme/Theme.kt` içinde `MaterialTheme` yerine `MaterialExpressiveTheme`, ardından bu sürüm kaydı ve `tokens.md` güncellenir. Diğer dosyalar değişmez, çünkü ekranlar `MaterialTheme.*` tokenlarını kullanıyor.
+- Kararlı sürüm çıkınca: `libs.versions.toml` içinde `material3` değeri güncellenir, derleme ve görüntü testleri yeniden çalıştırılır.
+- **Köşeler:** Expressive'in ayırt edici şekilleri bu projede kullanılmıyor. Köşeler `Radius` tokenlarıyla (8/12/16 dp) sabitli. Bu, spec'te verilen değerlerdir. Expressive şekillerini görmek için `Shape.kt` ile `tokens.md` birlikte değiştirilmelidir.
+- **Görüntü testi:** Expressive geçişinden sonra referans görüntüleri piksel olarak değişmedi. Köşeler sabit tokenlarla geldiği için bu beklenen bir sonuç.
 
 ## Test kütüphaneleri
 
