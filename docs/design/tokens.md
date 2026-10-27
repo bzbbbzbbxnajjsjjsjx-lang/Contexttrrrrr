@@ -5,7 +5,7 @@ Bu dosya kodla birebir aynı tutulur. Kaynak dosyalar:
 
 Bu tokenlar geçicidir. Material Theme Builder çıktısıyla değiştirilecek.
 
-Doğrulama durumu: Hex değerleri resmi M3 baseline tablosundan henüz doğrulanamadı. Sayfa dinamik içerikli olduğu için çekilemedi. Theme Builder çıktısı geldiğinde bu tablo onunla karşılaştırılır.
+Doğrulama durumu: Hex değerleri Material 3 baseline paletidir. Resmi M3 sayfası dinamik içerik döndürdüğü için hex değerleri bu oturumda doğrulanamadı. Marka rengi istenirse palet Google'ın Material Color Utilities algoritmasıyla o renkten üretilir. Theme Builder kullanılmıyor.
 
 ## Renk rolleri (Material 3)
 
